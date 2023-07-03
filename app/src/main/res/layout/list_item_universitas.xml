@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:elevation="32dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID"
+            android:visibility="invisible"/>
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nama Universitas"
+            android:textStyle="bold"
+            android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/tv_lokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lokasi Universitas"
+            android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/tv_urlmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Url Map Universitas"
+            android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/tv_akreditasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Akreditasi Universitas"
+            android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/tv_no_tlpn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No Telepon Universitas"
+            android:textSize="17dp"/>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
