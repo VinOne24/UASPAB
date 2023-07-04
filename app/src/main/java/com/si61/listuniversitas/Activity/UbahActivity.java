@@ -19,10 +19,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UbahActivity extends AppCompatActivity {
-    private EditText etNama, etLokasi, etUrlmap, etAkreditasi, etNo_tlpn;
+    private EditText etNama, etLokasi, etUrlmap, etAkreditasi, etNo_tlpn, etDetail;
     private Button btnSimpan;
-    private String  nama, lokasi, urlmap, akreditasi, no_tlpn;
-    private  String yId, yNama, yLokasi, yUrlmap, yAkreditasi, yNo_tlpn;
+    private String  nama, lokasi, urlmap, akreditasi, no_tlpn, detail;
+    private  String yId, yNama, yLokasi, yUrlmap, yAkreditasi, yNo_tlpn, yDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,7 @@ public class UbahActivity extends AppCompatActivity {
         etUrlmap = findViewById(R.id.et_urlmap);
         etAkreditasi = findViewById(R.id.et_akreditasi);
         etNo_tlpn = findViewById(R.id.et_no_tlpn);
+        etDetail = findViewById(R.id.et_detail);
         btnSimpan = findViewById(R.id.btn_simpan);
 
         Intent tangkap = getIntent();
@@ -43,12 +44,14 @@ public class UbahActivity extends AppCompatActivity {
         yUrlmap = tangkap.getStringExtra("xUrlmap");
         yAkreditasi = tangkap.getStringExtra("xAkreditasi");
         yNo_tlpn = tangkap.getStringExtra("xNo_tlpn");
+        yDetail = tangkap.getStringExtra("xDetail");
 
         etNama.setText(yNama);
         etLokasi.setText(yLokasi);
         etUrlmap.setText(yUrlmap);
         etAkreditasi.setText(yAkreditasi);
         etNo_tlpn.setText(yNo_tlpn);
+        etDetail.setText(yDetail);
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,6 +61,7 @@ public class UbahActivity extends AppCompatActivity {
                 urlmap = etUrlmap.getText().toString();
                 akreditasi = etAkreditasi.getText().toString();
                 no_tlpn = etNo_tlpn.getText().toString();
+                detail = etDetail.getText().toString();
 
 
                 if(nama.trim().isEmpty()){
@@ -75,6 +79,9 @@ public class UbahActivity extends AppCompatActivity {
                 else if(no_tlpn.trim().isEmpty()){
                     etNo_tlpn.setError("No telepon Universitas Tidak Boleh Kosong");
                 }
+                else if(detail.trim().isEmpty()){
+                    etDetail.setError("Detail Universitas Tidak Boleh Kosong");
+                }
                 else{
                     prossesUbah();
 
@@ -85,7 +92,7 @@ public class UbahActivity extends AppCompatActivity {
 
     private void  prossesUbah(){
         APIRequestData API = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ModelResponse> proses = API.ardUpdate(yId, nama, lokasi, urlmap, akreditasi, no_tlpn);
+        Call<ModelResponse> proses = API.ardUpdate(yId, nama, lokasi, urlmap, akreditasi, no_tlpn, detail);
 
         proses.enqueue(new Callback<ModelResponse>() {
             @Override

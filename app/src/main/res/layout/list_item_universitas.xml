@@ -47,6 +47,13 @@
             android:layout_height="wrap_content"
             android:text="No Telepon Universitas"
             android:textSize="17dp"/>
+        <TextView
+            android:id="@+id/tv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detail Universitas"
+            android:maxLines="1"
+            android:textSize="17dp"/>
 
 
     </LinearLayout>

@@ -18,9 +18,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TambahActivity extends AppCompatActivity {
-    private EditText etNama, etLokasi, etUrlmap, etAkreditasi, etNo_tlpn;
+    private EditText etNama, etLokasi, etUrlmap, etAkreditasi, etNo_tlpn, etDetail;
     private Button btnSimpan;
-    private String  nama, lokasi, urlmap, akreditasi,  no_tlpn;
+    private String  nama, lokasi, urlmap, akreditasi,  no_tlpn, detail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class TambahActivity extends AppCompatActivity {
         etUrlmap = findViewById(R.id.et_urlmap);
         etAkreditasi = findViewById(R.id.et_akreditasi);
         etNo_tlpn = findViewById(R.id.et_no_tlpn);
+        etDetail = findViewById(R.id.et_detail);
         btnSimpan = findViewById(R.id.btn_simpan);
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +42,7 @@ public class TambahActivity extends AppCompatActivity {
                 urlmap = etUrlmap.getText().toString();
                 akreditasi = etAkreditasi.getText().toString();
                 no_tlpn = etNo_tlpn.getText().toString();
+                detail = etDetail.getText().toString();
 
                 if(nama.trim().isEmpty()){
                     etNama.setError("Nama Tidak Boleh Kosong");
@@ -57,6 +59,9 @@ public class TambahActivity extends AppCompatActivity {
                 else if(no_tlpn.trim().isEmpty()){
                     etNo_tlpn.setError("No Telepon Tidak Boleh Kosong");
                 }
+                else if(detail.trim().isEmpty()){
+                    etDetail.setError("Detail Universitas Tidak Boleh Kosong");
+                }
                 else{
                     prosesSimpan();
                 }
@@ -65,7 +70,7 @@ public class TambahActivity extends AppCompatActivity {
     }
     private void  prosesSimpan(){
         APIRequestData API = RetroServer.konekRetrofit().create(APIRequestData.class);
-        Call<ModelResponse> proses = API.ardCreate(nama, lokasi, urlmap, akreditasi, no_tlpn);
+        Call<ModelResponse> proses = API.ardCreate(nama, lokasi, urlmap, akreditasi, no_tlpn, detail);
 
         proses.enqueue(new Callback<ModelResponse>() {
             @Override

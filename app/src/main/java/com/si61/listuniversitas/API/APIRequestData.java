@@ -19,7 +19,8 @@ public interface APIRequestData {
             @Field("lokasi") String lokasi,
             @Field("urlmap") String urlmap,
             @Field("akreditasi") String akreditasi,
-            @Field("no_tlpn") String no_tlpn
+            @Field("no_tlpn") String no_tlpn,
+            @Field("detail") String detail
     );
 
     @FormUrlEncoded
@@ -30,7 +31,8 @@ public interface APIRequestData {
             @Field("lokasi") String lokasi,
             @Field("urlmap") String urlmap,
             @Field("akreditasi") String akreditasi,
-            @Field("no_tlpn") String no_tlpn
+            @Field("no_tlpn") String no_tlpn,
+            @Field("detail") String detail
     );
 
     @FormUrlEncoded

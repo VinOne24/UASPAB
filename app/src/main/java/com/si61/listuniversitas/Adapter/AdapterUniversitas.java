@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.si61.listuniversitas.Activity.DetailActivity;
 import com.si61.listuniversitas.Model.ModelUniversitas;
 import com.si61.listuniversitas.API.APIRequestData;
 import com.si61.listuniversitas.API.RetroServer;
@@ -54,6 +55,20 @@ public class AdapterUniversitas extends RecyclerView.Adapter<AdapterUniversitas.
         holder.tvUrlMap.setText(MW.getUrlmap());
         holder.tvAkreditasi.setText(MW.getAkreditasi());
         holder.tvNo_tlpn.setText(MW.getNo_tlpn());
+        holder.tvDetail.setText(MW.getDetail());
+
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String nama =listUniversitas.get(holder.getAdapterPosition()).getNama();
+//                String detail = listUniversitas.get(holder.getAdapterPosition()).getDetail();
+//
+//                Intent kirim = new Intent(holder.itemView.getContext(), DetailActivity.class);
+//                kirim.putExtra("varNama", nama);
+//                kirim.putExtra("varDetail", detail);
+//
+//            }
+//        });
 
     }
 
@@ -64,7 +79,7 @@ public class AdapterUniversitas extends RecyclerView.Adapter<AdapterUniversitas.
 
     public class VHUniversitas extends RecyclerView.ViewHolder{
 
-        TextView tvId, tvNama, tvLokasi, tvUrlMap,tvAkreditasi, tvNo_tlpn;
+        TextView tvId, tvNama, tvLokasi, tvUrlMap,tvAkreditasi, tvNo_tlpn, tvDetail;
 
 
         public VHUniversitas(@NonNull View itemView) {
@@ -76,6 +91,17 @@ public class AdapterUniversitas extends RecyclerView.Adapter<AdapterUniversitas.
             tvUrlMap = itemView.findViewById(R.id.tv_urlmap);
             tvAkreditasi = itemView.findViewById(R.id.tv_akreditasi);
             tvNo_tlpn = itemView.findViewById(R.id.tv_no_tlpn);
+            tvDetail = itemView.findViewById(R.id.tv_detail);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent kirim = new Intent(ctx, DetailActivity.class);
+                    kirim.putExtra("varNama", tvNama.getText().toString());
+                    kirim.putExtra("varDetail", tvDetail.getText().toString());
+                    ctx.startActivity(kirim);
+                }
+            });
 
             itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
@@ -94,6 +120,7 @@ public class AdapterUniversitas extends RecyclerView.Adapter<AdapterUniversitas.
                             kirim.putExtra("xUrlmap", tvUrlMap.getText().toString());
                             kirim.putExtra("xAkreditasi", tvAkreditasi.getText().toString());
                             kirim.putExtra("xNo_tlpn", tvNo_tlpn.getText().toString());
+                            kirim.putExtra("xDetail", tvDetail.getText().toString());
                             ctx.startActivity(kirim);
                         }
                     });

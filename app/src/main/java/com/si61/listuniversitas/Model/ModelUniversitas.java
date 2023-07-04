@@ -1,7 +1,7 @@
 package com.si61.listuniversitas.Model;
 
 public class ModelUniversitas {
-    private  String id, nama, lokasi, urlmap, akreditasi, no_tlpn;
+    private  String id, nama, lokasi, urlmap, akreditasi, no_tlpn, detail;
 
     public String getId() {
         return id;
@@ -25,6 +25,9 @@ public class ModelUniversitas {
 
     public String getNo_tlpn() {
         return no_tlpn;
+    }
+    public String getDetail() {
+        return detail;
     }
 }
 
